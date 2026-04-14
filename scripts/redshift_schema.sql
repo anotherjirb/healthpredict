@@ -13,7 +13,7 @@ CREATE SCHEMA IF NOT EXISTS healthpredict;
 -- distkey(patient_id)  → efficient per-patient queries
 -- sortkey(pred_timestamp) → chronological scan optimization
 CREATE TABLE IF NOT EXISTS healthpredict.prediction_log (
-    id                  VARCHAR(36)     DEFAULT CONCAT(GETDATE()::VARCHAR, '-', RANDOM()::VARCHAR),
+    id                  VARCHAR(36)     DEFAULT CONCAT(GETDATE()::VARCHAR || '-', RANDOM()::VARCHAR),
     patient_id          VARCHAR(64)     NOT NULL,
     pred_timestamp      TIMESTAMP       NOT NULL DEFAULT GETDATE(),
     pregnancies         INTEGER,
